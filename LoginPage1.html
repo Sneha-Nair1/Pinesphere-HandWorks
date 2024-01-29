@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Page</title>
+    <link rel="stylesheet" href="summa.css">
+</head>
+<body>
+    <video autoplay loop muted plays-inline class="background-clip">
+        <source src="loginbackground.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <div class="form-container">
+            <form id="loginForm">
+                <h2>Login</h2>
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+
+                <button type="submit">Login</button>
+                <p class="message">Not registered? <a href="#" id="signupLink">Create an account</a></p>
+            </form>
+
+            <form id="signupForm" style="display: none;">
+                <h2>Sign up</h2>
+                <label for="signupUsername">Username:</label>
+                <input type="text" id="signupUsername" name="signupUsername" required>
+
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" name="signupPassword" required>
+
+                <button type="submit">Sign up</button>
+                <p class="message">Already registered? <a href="#" id="loginLink">Login</a></p>
+            </form>
+        </div>
+    </div> 
+
+    <script src="summa.js"></script>
+    <!-- <script src="index.php"></script> -->
+</body>
+</html>
