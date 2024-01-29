@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: auto;
+            padding: auto;
+            background-position: center;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .logout-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .logout-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-to-home:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <div class="logout-message">
+            <p>You have successfully logged out.</p>
+        </div>
+        <a href="summa.html" class="back-to-home">Back to Home</a>
+    <script type="text/javascript">
+        function preventBack(){window.history.forward()};
+        setTimeout("preventBack()",0);
+            window.onunload=function(){null;}
+    </script>
+    </div>
+</body>
+</html>

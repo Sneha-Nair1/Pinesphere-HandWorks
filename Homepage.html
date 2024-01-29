@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Places</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap">
+    <style>
+        body {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin:auto;
+            padding:auto;
+            background-position: center;
+            color: #333; /* Text color */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent dark background */
+            padding: 20px;
+            text-align: center;
+            color: #6ddb0d; /* Header text color */
+            border-bottom: 2px solid #fff; /* White border at the bottom of the header */
+        }
+        #header-box {
+            padding:auto;
+            border-radius:10px;
+            text-align: center;
+            margin: 0;
+        }
+        nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+
+        .tourist-place {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tourist-place img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+
+        }
+
+        .tourist-place .place-info {
+            padding: 20px;
+        }
+
+        .tourist-place h2 {
+            color: #333;
+        }
+
+        .tourist-place p {
+            color: #555;
+        }
+
+        .btn-view-more {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-view-more:hover {
+            background-color: #555;
+
+        }
+
+        .btn-view-location {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-view-location:hover {
+            background-color: #45a049;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-top: 20px;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent dark background for footer */
+            padding: 10px;
+            text-align: center;
+            color: #fff; /* Footer text color */
+            border-top: 2px solid #fff; /* White border at the top of the footer */
+        }
+        .video-wallpaper {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-clip {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .background-clip {
+                width:auto;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div id="header-box">
+            <h1>Kerala Tourist Places</h1>
+        </div>
+        <nav>
+            <a href="WelcomePage.html">Home</a>
+            <a href="About.html">About Us</a>
+            <a href="Contact.html">Contact</a>
+            <a href="summalogout.html">Logout</a>
+        </nav>
+    </header>
+    <!-- <div class="video-wallpaper">
+        <video autoplay loop muted plays-inline class="background-clip">
+            <source src="Welcomebackground.mp4" type="video/mp4">
+        </video>
+    </div> -->
+     <div class="tourist-place">
+        <img src="Kochi.jpg" alt="Kochi">
+        <div class="place-info">
+            <h2>Kochi</h2>
+            <p>Kochi, also known as Cochin, is a major port city on the southwest coast of India. It has a rich history and is known for its diverse culture.</p>
+        </div>
+        <a href="#" class="btn-view-more" onclick="showDetails('Kochi')">View More</a>
+        <a href="#" class="btn-view-location" onclick="viewLocation('Kochi')">View Location</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.043978738739!2d76.2606501147762!3d9.939093992748808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8cf41364d5781%3A0xb5b39f703d12da14!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1643813771239!5m2!1sen!2sinx" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="tourist-place">
+        <img src="Munnar.jpg" alt="Munnar">
+        <div class="place-info">
+            <h2>Munnar</h2>
+            <p>Munnar is a beautiful hill station known for its lush green tea plantations, misty mountains, and pleasant climate.</p>
+        </div>
+        <a href="#" class="btn-view-more" onclick="showDetails('Munnar')">View More</a>
+        <a href="#" class="btn-view-location" onclick="viewLocation('Munnar')">View Location</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.867482038824!2d77.0636133147679!3d10.094861192673458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8a8173cc6a9d7%3A0x84a6b4db48c620e9!2sMunnar%2C%20Kerala!5e0!3m2!1sen!2sin!4v1643813848478!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="tourist-place">
+        <img src="Thekkady.jpg" alt="Thekkady">
+        <div class="place-info">
+            <h2>Thekkady</h2>
+            <p>Thekkady is known for the Periyar National Park, where you can experience wildlife and enjoy a boat ride in the Periyar Lake.</p>
+        </div>
+        <a href="#" class="btn-view-more" onclick="showDetails('Thekkady')">View More</a>
+        <a href="#" class="btn-view-location" onclick="viewLocation('Thekkady')">View Location</a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1679.1697239260824!2d77.1762975582564!3d9.611262345025298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8b90c723bd07b%3A0x34051ea56e146e0c!2sThekkady%2C%20Kerala!5e0!3m2!1sen!2sin!4v1644015871971!5m2!1sen!2sin" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Add more tourist places as needed -->
+
+    <div id="details-modal" style="display: none;">
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <button onclick="closeDetails()">Close</button>
+    </div>
+
+    <script>
+        function showDetails(place) {
+            var title = document.getElementById('modal-title');
+            var description = document.getElementById('modal-description');
+            title.textContent = place;
+
+            // You can customize the descriptions based on the tourist places
+            switch (place) {
+                case 'Kochi':
+                    description.textContent = "Kochi, also known as Cochin, is a major port city on the southwest coast of India. It has a rich history and is known for its diverse culture.";
+                    break;
+                case 'Munnar':
+                    description.textContent = "Munnar is a beautiful hill station known for its lush green tea plantations, misty mountains, and pleasant climate.";
+                    break;
+                case 'Thekkady':
+                    description.textContent = "The name Thekkady is derived from the word 'thekku' which means teak. Temperatures are lowest in the months of December to January and highest in the months of April to May"
+                    break;
+                // Add more cases for other tourist places
+            }
+
+            document.getElementById('details-modal').style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById('details-modal').style.display = 'none';
+        }
+    </script>
+    <footer>
+        <p>&copy; Copyrights @ 2024 Kerala Tourist Places</p>
+    </footer>
+</body>
+</html>
+
