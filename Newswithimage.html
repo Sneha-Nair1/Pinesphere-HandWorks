@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News With Images</title>
+  <style>
+    img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    article {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="news"></div>
+
+  <script>
+    const apiKey = '7f03b4d9-d790-4008-a761-ca05369a47b5';
+
+    async function getNews() {
+      const res = await fetch(`https://newsapi.org/v2/everything?q=apple&from=2024-01-28&to=2024-01-28&sortBy=popularity&apiKey=cf7ab2dd40cf4f72ae38728832e581b0`);
+      const data = await res.json(); 
+      displayNews(data.articles);
+    }
+
+    function displayNews(articles) {
+      let newsHtml = '';
+      articles.forEach(article => {
+        newsHtml += `
+          <article>
+            <img src="${article.urlToImage}">
+            <h2>${article.title}</h2> 
+            <p>${article.description}</p>
+          </article>
+        `; 
+      });
+
+      document.querySelector('#news').innerHTML = newsHtml;
+    }
+
+    getNews();
+  </script>
+
+</body>
+</html>
