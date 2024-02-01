@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Current Weather</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      /* box-sizing: border-box; */
+    }
+    .weather-container {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      justify-content: center;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      /* margin-top:200px; */
+      border-radius:20px;
+      width: 500px;
+    }
+    .video-wallpaper {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.welcome-container {
+  padding:50px;  
+  background-color:black;
+  min-height:10px;
+}
+
+.background-clip {
+    width: 100%;
+    height: auto;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.7);
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .background-clip {
+        width: auto;
+        height: 100%;
+        filter: brightness(0.7);
+    }
+}
+h2{
+  color:white;
+}
+p{
+  color:white;
+}
+.logout-button {
+  position: absolute;
+  top:8%;
+  transform: translateY(-50%);
+  right:10px;
+}
+
+.logout-button a {
+  color: white;
+  text-decoration: none;
+  padding:15px;
+  border: 1px solid white;
+  border-radius:10px;
+  margin-left:10px;
+}
+footer {
+    color: #fff;
+    text-align: center;
+    padding:30px;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+}
+/* .footer{
+  background-color: #2c3e50;
+  position: fixed;
+  bottom: 0;
+  margin-left: 0;
+} */
+  </style>
+</head>
+<body>
+  <div class="weather-container">
+    <h2>Current Weather</h2>
+    <p id="location"></p>
+    <p id="temperature"></p>
+    <p id="description"></p>
+  </div>
+  <div class="logout-button">
+    <a href="Weather Login Page.html">Logout</a>
+  </div>
+
+  <div class="welcome-container">
+    <!-- <a href="HomePage1.html" class="logout-btn">Logout</a> -->
+  <video autoplay loop muted plays-inline class="background-clip">
+    <source src="GodsGift video (1080p).mp4" type="video/mp4">
+  </video>
+  <footer>
+    <div class="footer">Copyright@2024 God'sGift . All rights reserved.</div>
+  </footer>
+
+
+  <script>
+    function getCurrentWeather() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          const apiKey = 'a987e8dd06ef4c5a8cdfeab595f547f7';
+          const locationUrl = `https://api.opencagedata.com/geocode/v1/json?key=${apiKey}&q=${latitude}+${longitude}&pretty=1`;
+
+          try {
+            const locationResponse = await fetch(locationUrl);
+            const locationData = await locationResponse.json();
+            const location = locationData.results[0].formatted;
+
+            const weatherApiKey = 'ea4249b39fd7465d97671523240102';
+            const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${latitude},${longitude}`;
+
+            const weatherResponse = await fetch(weatherUrl);
+            const weatherData = await weatherResponse.json();
+            const temperature = weatherData.current.temp_c;
+            const description = weatherData.current.condition.text;
+
+            document.getElementById('location').textContent = `Location: ${location}`;
+            document.getElementById('temperature').textContent = `Temperature: ${temperature}°C`;
+            document.getElementById('description').textContent = `Description: ${description}`;
+          } catch (error) {
+            console.log('Error fetching data:', error);
+          }
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
+    }
+    getCurrentWeather();
+    const logoutButton = document.querySelector('.logout-btn');
+logoutButton.addEventListener('click', () => {
+  // Redirect to the homepage on logout
+  window.location.href = 'Weather Login Page.html';
+});
+  </script>
+  <script type="text/javascript">
+    function preventBack(){window.history.forward()};
+    setTimeout("preventBack()",0);
+        window.onunload=function(){null;}
+  </script>
+  <script>
+  </script>
+</body>
+</html>
