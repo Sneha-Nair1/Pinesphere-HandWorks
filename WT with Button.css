@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100;1,400&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
+body {
+  font-family:'Poppins', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color:#000000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+button:hover {
+  background-color:red;
+}
+
+#informationDisplay {
+  margin-top:50px;
+  padding:20px;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color:#fff;
+  /* margin-top:200px; */
+  border-radius:20px;
+  width:400px;
+  justify-content:center;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.video-wallpaper {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.background-clip {
+  width: 100%;
+  height: auto;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: brightness(0.7);
+}
+@media (max-aspect-ratio: 16/9) {
+  .background-clip {
+      width: auto;
+      height: 100%;
+      filter: brightness(0.7);
+  }
+}
+footer {
+  color: #fff;
+  text-align: center;
+  padding:30px;
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+}
+.welcome-container {
+  padding:50px;  
+  background-color:black;
+  top:0;
+  position: fixed;
+  width:100%;
+  /* min-height:10px; */
+  /* margin-bottom:900px; */
+}
+.logout-button {
+  position: absolute;
+  top:8%;
+  transform: translateY(-50%);
+  right:10px;
+}
+
+.logout-button a {
+  color: white;
+  text-decoration: none;
+  padding:15px;
+  border: 1px solid white;
+  border-radius:10px;
+  margin-left:10px;
+}
+h2{
+  margin-top: 15%;
+  text-align:center;
+  color: #fff;
+}
