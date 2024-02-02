@@ -108,50 +108,59 @@ footer {
   </div>
 
   <div class="welcome-container">
-    <!-- <a href="HomePage1.html" class="logout-btn">Logout</a> -->
-  <video autoplay loop muted plays-inline class="background-clip">
-    <source src="GodsGift video (1080p).mp4" type="video/mp4">
-  </video>
-  <footer>
-    <div class="footer">Copyright@2024 God'sGift . All rights reserved.</div>
-  </footer>
-
+    <video autoplay loop muted plays-inline class="background-clip">
+      <source src="GodsGift video (1080p).mp4" type="video/mp4">
+    </video>
+    <footer>
+      <div class="footer">Copyright@2024 God'sGift. All rights reserved.</div>
+    </footer>
+  </div>
 
   <script>
     function getCurrentWeather() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-          const apiKey = 'a987e8dd06ef4c5a8cdfeab595f547f7';
-          const locationUrl = `https://api.opencagedata.com/geocode/v1/json?key=${apiKey}&q=${latitude}+${longitude}&pretty=1`;
+      const apiKey = 'a987e8dd06ef4c5a8cdfeab595f547f7';
+      const locationUrl = `https://api.opencagedata.com/geocode/v1/json?key=${apiKey}&q=${latitude}+${longitude}&pretty=1`;
 
-          try {
-            const locationResponse = await fetch(locationUrl);
-            const locationData = await locationResponse.json();
-            const location = locationData.results[0].formatted;
+      try {
+        const locationResponse = await fetch(locationUrl);
+        const locationData = await locationResponse.json();
 
-            const weatherApiKey = 'ea4249b39fd7465d97671523240102';
-            const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${latitude},${longitude}`;
+        let location = 'Unknown Location';
 
-            const weatherResponse = await fetch(weatherUrl);
-            const weatherData = await weatherResponse.json();
-            const temperature = weatherData.current.temp_c;
-            const description = weatherData.current.condition.text;
-
-            document.getElementById('location').textContent = `Location: ${location}`;
-            document.getElementById('temperature').textContent = `Temperature: ${temperature}°C`;
-            document.getElementById('description').textContent = `Description: ${description}`;
-          } catch (error) {
-            console.log('Error fetching data:', error);
+        if (locationData.results.length > 0) {
+          if (locationData.results[0].components && locationData.results[0].components.road) {
+            location = locationData.results[0].formatted;
+          } else if (locationData.results[0].formatted) {
+            location = locationData.results[0].formatted;
           }
-        });
-      } else {
-        console.log('Geolocation is not supported by this browser.');
+        }
+
+        const weatherApiKey = 'ea4249b39fd7465d97671523240102';
+        const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${latitude},${longitude}`;
+
+        const weatherResponse = await fetch(weatherUrl);
+        const weatherData = await weatherResponse.json();
+        const temperature = weatherData.current.temp_c;
+        const description = weatherData.current.condition.text;
+
+        document.getElementById('location').textContent = `Location: ${location}`;
+        document.getElementById('temperature').textContent = `Temperature: ${temperature}°C`;
+        document.getElementById('description').textContent = `Description: ${description}`;
+      } catch (error) {
+        console.log('Error fetching data:', error);
       }
-    }
-    getCurrentWeather();
+    });
+  } else {
+    console.log('Geolocation is not supported by this browser.');
+  }
+}
+
+getCurrentWeather();
     const logoutButton = document.querySelector('.logout-btn');
 logoutButton.addEventListener('click', () => {
   // Redirect to the homepage on logout
